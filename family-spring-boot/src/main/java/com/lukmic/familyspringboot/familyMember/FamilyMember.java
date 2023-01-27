@@ -10,7 +10,7 @@ public class FamilyMember {
     private String givenName;
     private String familyName;
     private Integer age;
-    private Family membersFamily;
+    private Long familyId;
 
     public FamilyMember(Long id, String givenName, String familyName, Integer age) {
         this.id = id;
@@ -51,4 +51,11 @@ public class FamilyMember {
         this.age = age;
     }
 
+    public Long getFamilyId() {
+        return familyId;
+    }
+
+    public void setFamilyId(Long familyId) {
+        this.familyId = familyId;
+    }
 }

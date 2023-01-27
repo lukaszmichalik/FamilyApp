@@ -2,6 +2,7 @@ package com.lukmic.familyspringboot.family;
 
 import com.lukmic.familyspringboot.familyMember.FamilyMember;
 import com.lukmic.familyspringboot.familyMember.FamilyMemberRepostory;
+import com.lukmic.familyspringboot.familyMember.FamilyMemberService;
 import com.lukmic.familyspringboot.request.FamilyRequest;
 import com.lukmic.familyspringboot.response.IdResponse;
 import com.lukmic.familyspringboot.response.MessageResponse;
@@ -27,6 +28,9 @@ public class FamilyController {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
+    @Autowired
+    FamilyMemberService familyMemberService;
+
 
 
     @PostMapping("/createFamily")
@@ -41,7 +45,10 @@ public class FamilyController {
 
         familyRepository.save(family);
 
-//        familyMemberRepostory.saveAll(familyRequest.getFamilyMembers());
+        familyRequest.getFamilyMembers().forEach(familyMember -> {
+            familyMember.setFamilyId(family.getId());
+            familyMemberService.createFamilyMember(familyMember);
+        });
 
         return ResponseEntity.ok(new IdResponse(family.getId()));
     }

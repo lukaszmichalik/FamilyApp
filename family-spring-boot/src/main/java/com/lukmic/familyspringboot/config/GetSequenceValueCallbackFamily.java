@@ -10,13 +10,13 @@ import org.springframework.stereotype.Component;
 import java.sql.SQLException;
 
 @Component
-public class GetSequenceValueCallback implements BeforeConvertCallback<Family> {
+public class GetSequenceValueCallbackFamily implements BeforeConvertCallback<Family> {
 
-    private Logger log = LogManager.getLogger(GetSequenceValueCallback.class);
+    private Logger log = LogManager.getLogger(GetSequenceValueCallbackFamily.class);
 
     private final JdbcTemplate jdbcTemplate;
 
-    public GetSequenceValueCallback(JdbcTemplate jdbcTemplate) {
+    public GetSequenceValueCallbackFamily(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
@@ -35,7 +35,7 @@ public class GetSequenceValueCallback implements BeforeConvertCallback<Family> {
                     });
             family.setId(id);
         }
-
         return family;
     }
+
 }

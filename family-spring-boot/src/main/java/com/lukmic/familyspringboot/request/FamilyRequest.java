@@ -1,11 +1,16 @@
 package com.lukmic.familyspringboot.request;
 
+import com.lukmic.familyspringboot.familyMember.FamilyMember;
+
+import java.util.Set;
+
 public class FamilyRequest {
 
     private String familyName;
     private Integer nrOfInfants;
     private Integer nrOfChildren;
     private Integer nrOfAdults;
+    private Set<FamilyMember> familyMembers;
 
     public String getFamilyName() {
         return familyName;
@@ -37,5 +42,13 @@ public class FamilyRequest {
 
     public void setNrOfAdults(Integer nrOfAdults) {
         this.nrOfAdults = nrOfAdults;
+    }
+
+    public Set<FamilyMember> getFamilyMembers() {
+        return familyMembers;
+    }
+
+    public void setFamilyMembers(Set<FamilyMember> familyMembers) {
+        this.familyMembers = familyMembers;
     }
 }

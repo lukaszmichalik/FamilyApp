@@ -2,12 +2,13 @@ package com.lukmic.familyspringboot.family;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.lukmic.familyspringboot.familyMember.FamilyMember;
-import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.event.BeforeConvertEvent;
+import org.springframework.data.relational.core.mapping.MappedCollection;
+import org.springframework.data.relational.core.mapping.event.BeforeConvertCallback;
 
-import java.util.List;
+import java.util.Set;
+import java.util.UUID;
 
 
 public class Family {
@@ -17,10 +18,12 @@ public class Family {
     private Integer nrOfInfants;
     private Integer nrOfChildren;
     private Integer nrOfAdults;
-//    List<FamilyMember> familyMembers;
+
+    @MappedCollection(keyColumn = "family_id", idColumn = "family_id")
+    private Set<FamilyMember> familyMembers;
 
     public Family(String familyName, Integer nrOfInfants, Integer nrOfChildren, Integer nrOfAdults
-//            , List<FamilyMember> familyMembers
+//            , Set<FamilyMember> familyMembers
     ) {
         this.familyName = familyName;
         this.nrOfInfants = nrOfInfants;
@@ -29,11 +32,11 @@ public class Family {
 //        this.familyMembers = familyMembers;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -68,6 +71,17 @@ public class Family {
     public void setNrOfAdults(Integer nrOfAdults) {
         this.nrOfAdults = nrOfAdults;
     }
+
+//    @Bean
+//    BeforeConvertCallback<Family> beforeConvertCallback() {
+//
+//        return (family) -> {
+//            if (family.id == null) {
+//                family.id = UUID.randomUUID().toString();
+//            }
+//            return family;
+//        };
+//    }
 
 //    @Bean
 //    public ApplicationListener<?> idSetting() {

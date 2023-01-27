@@ -1,13 +1,16 @@
 package com.lukmic.familyspringboot.familyMember;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.lukmic.familyspringboot.family.Family;
 import org.springframework.data.annotation.Id;
 
 public class FamilyMember {
-    @Id
-    private long id;
+    @Id @JsonIgnore
+    private Long id;
     private String givenName;
     private String familyName;
     private Integer age;
+    private Family membersFamily;
 
     public FamilyMember(Long id, String givenName, String familyName, Integer age) {
         this.id = id;

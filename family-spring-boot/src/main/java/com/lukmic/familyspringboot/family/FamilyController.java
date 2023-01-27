@@ -1,18 +1,33 @@
 package com.lukmic.familyspringboot.family;
 
+import com.lukmic.familyspringboot.familyMember.FamilyMember;
+import com.lukmic.familyspringboot.familyMember.FamilyMemberRepostory;
 import com.lukmic.familyspringboot.request.FamilyRequest;
+import com.lukmic.familyspringboot.response.IdResponse;
 import com.lukmic.familyspringboot.response.MessageResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.sql.SQLException;
+import java.util.Set;
+
 @RestController
 public class FamilyController {
     @Autowired
     FamilyRepository familyRepository;
+
+    @Autowired
+    FamilyMemberRepostory familyMemberRepostory;
+
+    @Autowired
+    JdbcTemplate jdbcTemplate;
+
+
 
     @PostMapping("/createFamily")
     public ResponseEntity<?> createFamily(@RequestBody FamilyRequest familyRequest){
@@ -26,7 +41,9 @@ public class FamilyController {
 
         familyRepository.save(family);
 
-        return ResponseEntity.ok(new MessageResponse("nice"));
+//        familyMemberRepostory.saveAll(familyRequest.getFamilyMembers());
+
+        return ResponseEntity.ok(new IdResponse(family.getId()));
     }
 
     @GetMapping("/testGet")

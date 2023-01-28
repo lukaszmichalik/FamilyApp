@@ -9,5 +9,5 @@ import java.util.Optional;
 public interface FamilyService {
     ResponseEntity<?> createNewFamily(FamilyRequest familyRequest);
     ResponseEntity<?> retrieveFamily(IdRequest idRequest);
-
+    ResponseEntity<?> retrieveFamilyWithSearch(IdRequest idRequest);
 }

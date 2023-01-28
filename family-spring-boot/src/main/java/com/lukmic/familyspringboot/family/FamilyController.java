@@ -25,4 +25,10 @@ public class FamilyController {
 
         return familyService.retrieveFamily(idRequest);
     }
+
+    @PostMapping("/getFamilyWithSearch")
+    public ResponseEntity<?> getFamilyWitchSearch(@RequestBody IdRequest idRequest){
+
+        return familyService.retrieveFamilyWithSearch(idRequest);
+    }
 }

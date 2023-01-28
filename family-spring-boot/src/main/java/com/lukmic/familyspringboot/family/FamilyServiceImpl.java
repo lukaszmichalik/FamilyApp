@@ -15,14 +15,13 @@ import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
 
 @Service
-public class FamilyServiceIml implements FamilyService {
+public class FamilyServiceImpl implements FamilyService {
     @Autowired
     FamilyRepository familyRepository;
     @Autowired
     FamilyMemberService familyMemberService;
 
-    @Override
-    public ResponseEntity<?> createNewFamily(FamilyRequest familyRequest){
+    public Boolean validateFamilyData(FamilyRequest familyRequest){
 
         AtomicReference<Integer> nrOfInfants= new AtomicReference<>(0);
         AtomicReference<Integer> nrOfChildren= new AtomicReference<>(0);
@@ -38,19 +37,41 @@ public class FamilyServiceIml implements FamilyService {
         });
 
         if(!Objects.equals(nrOfInfants.get(), familyRequest.getNrOfInfants()))
-            return ResponseEntity
-                    .badRequest()
-                    .body(new MessageResponse("Error: number of infants doesn't match delivered data of family members"));
+            return false;
 
         if(!Objects.equals(nrOfChildren.get(), familyRequest.getNrOfChildren()))
-            return ResponseEntity
-                    .badRequest()
-                    .body(new MessageResponse("Error: number of children doesn't match delivered data of family members"));
+            return false;
 
         if(!Objects.equals(nrOfAdults.get(), familyRequest.getNrOfAdults()))
+            return false;
+
+        return true;
+
+//        if(!Objects.equals(nrOfInfants.get(), familyRequest.getNrOfInfants()))
+//            return ResponseEntity
+//                    .badRequest()
+//                    .body(new MessageResponse("Error: number of infants doesn't match delivered data of family members"));
+//
+//        if(!Objects.equals(nrOfChildren.get(), familyRequest.getNrOfChildren()))
+//            return ResponseEntity
+//                    .badRequest()
+//                    .body(new MessageResponse("Error: number of children doesn't match delivered data of family members"));
+//
+//        if(!Objects.equals(nrOfAdults.get(), familyRequest.getNrOfAdults()))
+//            return ResponseEntity
+//                    .badRequest()
+//                    .body(new MessageResponse("Error: number of adults doesn't match delivered data of family members"));
+
+
+    }
+
+    @Override
+    public ResponseEntity<?> createNewFamily(FamilyRequest familyRequest){
+
+        if(!validateFamilyData(familyRequest))
             return ResponseEntity
                     .badRequest()
-                    .body(new MessageResponse("Error: number of adults doesn't match delivered data of family members"));
+                    .body(new MessageResponse("Error: family data doesn't match family members data"));
 
         Family family = new Family(
                 familyRequest.getFamilyName(),
@@ -70,6 +91,7 @@ public class FamilyServiceIml implements FamilyService {
         return ResponseEntity.ok(new IdResponse(family.getId()));
     }
 
+    @Override
     public ResponseEntity<?> retrieveFamily(IdRequest idRequest){
         Optional<Family> family = familyRepository.findById(idRequest.getId());
 

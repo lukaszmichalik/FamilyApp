@@ -22,14 +22,11 @@ public class Family {
     @MappedCollection(keyColumn = "family_id", idColumn = "family_id")
     private Set<FamilyMember> familyMembers;
 
-    public Family(String familyName, Integer nrOfInfants, Integer nrOfChildren, Integer nrOfAdults
-//            , Set<FamilyMember> familyMembers
-    ) {
+    public Family(String familyName, Integer nrOfInfants, Integer nrOfChildren, Integer nrOfAdults) {
         this.familyName = familyName;
         this.nrOfInfants = nrOfInfants;
         this.nrOfChildren = nrOfChildren;
         this.nrOfAdults = nrOfAdults;
-//        this.familyMembers = familyMembers;
     }
 
     public Long getId() {
@@ -79,34 +76,4 @@ public class Family {
     public void setFamilyMembers(Set<FamilyMember> familyMembers) {
         this.familyMembers = familyMembers;
     }
-
-    //    @Bean
-//    BeforeConvertCallback<Family> beforeConvertCallback() {
-//
-//        return (family) -> {
-//            if (family.id == null) {
-//                family.id = UUID.randomUUID().toString();
-//            }
-//            return family;
-//        };
-//    }
-
-//    @Bean
-//    public ApplicationListener<?> idSetting() {
-//
-//        return (ApplicationListener<BeforeConvertEvent>) event -> {
-//
-//            if (event.getEntity() instanceof Family) {
-//                setId((id) event.getEntity());
-//            }
-//        };
-//    }
-
-//    public List<FamilyMember> getFamilyMembers() {
-//        return familyMembers;
-//    }
-//
-//    public void setFamilyMembers(List<FamilyMember> familyMembers) {
-//        this.familyMembers = familyMembers;
-//    }
 }

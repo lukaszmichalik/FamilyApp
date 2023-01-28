@@ -8,6 +8,8 @@ import com.lukmic.familyspringboot.response.FamilyResponse;
 import com.lukmic.familyspringboot.response.IdResponse;
 import com.lukmic.familyspringboot.response.MessageResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -97,29 +99,35 @@ public class FamilyServiceImpl implements FamilyService {
     public ResponseEntity<?> retrieveFamily(IdRequest idRequest){
         Optional<Family> family = familyRepository.findById(idRequest.getId());
 
-        Family familyB =family.get();
+        if (family.isPresent()) {
+            return ResponseEntity.ok(new FamilyResponse(
+                    family.get().getFamilyName(),
+                    family.get().getNrOfInfants(),
+                    family.get().getNrOfChildren(),
+                    family.get().getNrOfAdults(),
+                    family.get().getFamilyMembers()));
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(new MessageResponse(String.format("Family with id %s not found",idRequest.getId())));
+        }
 
-        return ResponseEntity.ok(new FamilyResponse(
-                familyB.getFamilyName(),
-                familyB.getNrOfInfants(),
-                familyB.getNrOfChildren(),
-                familyB.getNrOfAdults(),
-                familyB.getFamilyMembers()));
     }
 
     @Override
     public ResponseEntity<?> retrieveFamilyWithSearch(IdRequest idRequest) {
         Optional<Family> family = familyRepository.findById(idRequest.getId());
-
-        Family familyB =family.get();
-
         Set<FamilyMember> familyMembers = familyMemberService.searchFamilyMember(idRequest.getId());
 
-        return ResponseEntity.ok(new FamilyResponse(
-                familyB.getFamilyName(),
-                familyB.getNrOfInfants(),
-                familyB.getNrOfChildren(),
-                familyB.getNrOfAdults(),
-                familyMembers));
+        if (family.isPresent()) {
+            return ResponseEntity.ok(new FamilyResponse(
+                    family.get().getFamilyName(),
+                    family.get().getNrOfInfants(),
+                    family.get().getNrOfChildren(),
+                    family.get().getNrOfAdults(),
+                    familyMembers));
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(new MessageResponse(String.format("Family with id %s not found",idRequest.getId())));
+        }
     }
 }

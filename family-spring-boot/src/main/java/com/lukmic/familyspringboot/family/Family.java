@@ -72,7 +72,15 @@ public class Family {
         this.nrOfAdults = nrOfAdults;
     }
 
-//    @Bean
+    public Set<FamilyMember> getFamilyMembers() {
+        return familyMembers;
+    }
+
+    public void setFamilyMembers(Set<FamilyMember> familyMembers) {
+        this.familyMembers = familyMembers;
+    }
+
+    //    @Bean
 //    BeforeConvertCallback<Family> beforeConvertCallback() {
 //
 //        return (family) -> {

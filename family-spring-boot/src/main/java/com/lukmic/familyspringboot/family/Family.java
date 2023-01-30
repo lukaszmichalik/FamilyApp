@@ -5,12 +5,14 @@ import com.lukmic.familyspringboot.familyMember.FamilyMember;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.MappedCollection;
+import org.springframework.data.relational.core.mapping.Table;
 import org.springframework.data.relational.core.mapping.event.BeforeConvertCallback;
 
 import java.util.Set;
 import java.util.UUID;
 
 
+@Table(name = "family", schema = "family_db")
 public class Family {
     @Id @JsonIgnore
     private Long id;

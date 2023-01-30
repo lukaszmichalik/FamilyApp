@@ -9,6 +9,6 @@ import java.util.Set;
 
 @Repository
 public interface FamilyMemberRepostory extends CrudRepository<FamilyMember, Long> {
-    @Query("SELECT * FROM family_member WHERE family_id = :id")
+    @Query("SELECT * FROM family_member_db.family_member WHERE family_id = :id")
     Set<FamilyMember> findByFamilyId(Long id);
 }

@@ -3,7 +3,9 @@ package com.lukmic.familyspringboot.familyMember;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.lukmic.familyspringboot.family.Family;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
+@Table(name = "family_member", schema = "family_member_db")
 public class FamilyMember {
     @Id @JsonIgnore
     private Long id;

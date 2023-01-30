@@ -50,23 +50,6 @@ public class FamilyServiceImpl implements FamilyService {
             return false;
 
         return true;
-
-//        if(!Objects.equals(nrOfInfants.get(), familyRequest.getNrOfInfants()))
-//            return ResponseEntity
-//                    .badRequest()
-//                    .body(new MessageResponse("Error: number of infants doesn't match delivered data of family members"));
-//
-//        if(!Objects.equals(nrOfChildren.get(), familyRequest.getNrOfChildren()))
-//            return ResponseEntity
-//                    .badRequest()
-//                    .body(new MessageResponse("Error: number of children doesn't match delivered data of family members"));
-//
-//        if(!Objects.equals(nrOfAdults.get(), familyRequest.getNrOfAdults()))
-//            return ResponseEntity
-//                    .badRequest()
-//                    .body(new MessageResponse("Error: number of adults doesn't match delivered data of family members"));
-
-
     }
 
     @Override

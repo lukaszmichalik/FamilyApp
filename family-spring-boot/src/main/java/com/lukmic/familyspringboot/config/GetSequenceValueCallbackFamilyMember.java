@@ -25,7 +25,7 @@ public class GetSequenceValueCallbackFamilyMember implements BeforeConvertCallba
         if (familyMember.getId() == null) {
             log.info("Get the next value from a database sequence and use it as the primary key");
 
-            Long id = jdbcTemplate.query("SELECT nextval('family_member_id_seq')",
+            Long id = jdbcTemplate.query("SELECT nextval('family_member_db.family_member_id_seq')",
                     rs -> {
                         if (rs.next()) {
                             return rs.getLong(1);

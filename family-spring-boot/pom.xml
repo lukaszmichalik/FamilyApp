@@ -63,8 +63,10 @@
 					<password>postgre</password>
 					<schemas>
 						<schema>public</schema>
+						<schema>family_db</schema>
+						<schema>family_member_db</schema>
 					</schemas>
-					<url>jdbc:postgresql://localhost:5432/FamilyDB</url>
+					<url>jdbc:postgresql://localhost:5432/family_database</url>
 					<locations>
 						<location>filesystem:src/main/resources/db/migration</location>
 					</locations>

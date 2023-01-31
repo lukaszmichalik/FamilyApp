@@ -11,8 +11,13 @@
 	<groupId>com.lukmic</groupId>
 	<artifactId>family-spring-boot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
 	<name>family-spring-boot</name>
 	<description>Family app for Spring Boot</description>
+	<modules>
+		<module>family-member-app</module>
+		<module>family-app</module>
+	</modules>
 	<properties>
 		<java.version>17</java.version>
 	</properties>

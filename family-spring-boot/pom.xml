@@ -34,10 +34,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.flywaydb</groupId>
-			<artifactId>flyway-core</artifactId>
-		</dependency>
 
 		<dependency>
 			<groupId>org.postgresql</groupId>
@@ -56,26 +52,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.flywaydb</groupId>
-				<artifactId>flyway-maven-plugin</artifactId>
-				<version>9.8.1</version>
-				<configuration>
-					<cleanDisabled>false</cleanDisabled>
-					<baselineOnMigrate>true</baselineOnMigrate>
-					<user>postgres</user>
-					<password>postgre</password>
-					<schemas>
-						<schema>public</schema>
-						<schema>family_db</schema>
-						<schema>family_member_db</schema>
-					</schemas>
-					<url>jdbc:postgresql://localhost:5432/family_database</url>
-					<locations>
-						<location>filesystem:src/main/resources/db/migration</location>
-					</locations>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>

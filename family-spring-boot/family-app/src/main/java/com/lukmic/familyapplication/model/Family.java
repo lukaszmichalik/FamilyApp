@@ -6,7 +6,8 @@ import org.springframework.data.relational.core.mapping.Table;
 
 @Table(name = "family", schema = "family_db")
 public class Family {
-    @Id @JsonIgnore
+    @Id
+    @JsonIgnore
     private Long id;
     private String familyName;
     private Integer nrOfInfants;

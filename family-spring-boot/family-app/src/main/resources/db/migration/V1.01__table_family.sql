@@ -1,3 +1,4 @@
+CREATE SCHEMA family_db;
 CREATE TABLE family_db.family(
     id integer PRIMARY KEY,
     family_name text,

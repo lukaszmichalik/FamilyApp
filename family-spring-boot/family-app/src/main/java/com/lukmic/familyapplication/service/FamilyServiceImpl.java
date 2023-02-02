@@ -99,14 +99,14 @@ public class FamilyServiceImpl implements FamilyService {
     private void callCreateFamilyMember(FamilyMemberRequest familyMemberRequest) {
 
         ResponseEntity<?> responseEntity =
-                restTemplate.postForEntity("http://localhost:8081/create-family-member", familyMemberRequest
+                restTemplate.postForEntity("http://family-member-app:8081/create-family-member", familyMemberRequest
                         , ResponseEntity.class);
     }
 
     private FamilyMemberResponse[] callSearchFamilyMember(IdRequest familyId) {
 
         ResponseEntity<FamilyMemberResponse[]> responseEntity =
-                restTemplate.postForEntity("http://localhost:8081/search-family-member", familyId,
+                restTemplate.postForEntity("http://family-member-app:8081/search-family-member", familyId,
                         FamilyMemberResponse[].class);
 
         return responseEntity.getBody();

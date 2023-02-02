@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  family-app:
+    build: ./family-app
+    ports:
+      - "8080:8080"
+    environment:
+      DB_URL: jdbc:postgresql://database/family_database
+  family-member-app:
+    build: ./family-member-app
+    ports:
+      - "8081:8081"
+    environment:
+      DB_URL: jdbc:postgresql://database/family_database
+  database:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: family_database
+    ports:
+      - "5432:5432"

@@ -1,13 +1,19 @@
 package com.lukmic.familyapplication.request;
 
+import jakarta.validation.constraints.NotNull;
 import java.util.Set;
 
 public class FamilyRequest {
 
+    @NotNull(message = "Error: bad request, family name can't be null")
     private String familyName;
+    @NotNull(message = "Error: bad request, nr of infants can't be null")
     private Integer nrOfInfants;
+    @NotNull(message = "Error: bad request, nr of children can't be null")
     private Integer nrOfChildren;
+    @NotNull(message = "Error: bad request, nr of adults can't be null")
     private Integer nrOfAdults;
+    @NotNull(message = "Error: bad request, family members can't be null")
     private Set<FamilyMemberRequest> familyMembers;
 
     public String getFamilyName() {

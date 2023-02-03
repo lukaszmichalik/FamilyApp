@@ -19,10 +19,10 @@ import java.util.Optional;
 @Service
 public class FamilyServiceImpl implements FamilyService {
     @Autowired
-    FamilyRepository familyRepository;
+    private FamilyRepository familyRepository;
 
     @Autowired
-    RestTemplate restTemplate;
+    private RestTemplate restTemplate;
 
     @Override
     public ResponseEntity<?> retrieveFamily(IdRequest idRequest){
@@ -39,7 +39,8 @@ public class FamilyServiceImpl implements FamilyService {
                     familyMembers));
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body(new MessageResponse(String.format("Family with id %s not found.",idRequest.getId())));
+                    .body(new MessageResponse(
+                            String.format("Error: not found, family with id %s not found.", idRequest.getId())));
         }
 
     }
@@ -50,7 +51,7 @@ public class FamilyServiceImpl implements FamilyService {
         if(!validateFamilyData(familyRequest))
             return ResponseEntity
                     .badRequest()
-                    .body(new MessageResponse("Error: family data doesn't match family members data."));
+                    .body(new MessageResponse("Error: bad request, family data doesn't match family members data."));
 
         Family family = new Family(
                 familyRequest.getFamilyName(),

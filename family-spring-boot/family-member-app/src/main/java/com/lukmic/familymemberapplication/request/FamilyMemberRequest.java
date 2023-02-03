@@ -1,8 +1,15 @@
 package com.lukmic.familymemberapplication.request;
+
+import jakarta.validation.constraints.NotNull;
+
 public class FamilyMemberRequest {
+    @NotNull
     private String givenName;
+    @NotNull
     private String familyName;
+    @NotNull
     private Integer age;
+    @NotNull
     private Long familyId;
 
     public String getGivenName() {

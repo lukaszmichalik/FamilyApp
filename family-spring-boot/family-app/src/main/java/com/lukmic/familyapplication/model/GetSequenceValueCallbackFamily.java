@@ -10,7 +10,7 @@ import java.sql.SQLException;
 @Component
 public class GetSequenceValueCallbackFamily implements BeforeConvertCallback<Family> {
     @Autowired
-    JdbcTemplate jdbcTemplate;
+    private JdbcTemplate jdbcTemplate;
 
     @Override
     public Family onBeforeConvert(Family family) {

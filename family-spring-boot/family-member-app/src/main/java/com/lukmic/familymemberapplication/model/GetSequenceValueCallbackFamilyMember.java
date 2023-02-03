@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class GetSequenceValueCallbackFamilyMember implements BeforeConvertCallback<FamilyMember> {
 
     @Autowired
-    JdbcTemplate jdbcTemplate;
+    private JdbcTemplate jdbcTemplate;
 
     @Override
     public FamilyMember onBeforeConvert(FamilyMember familyMember) {

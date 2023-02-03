@@ -1,7 +1,10 @@
 package com.lukmic.familymemberapplication.request;
 
+import jakarta.validation.constraints.NotNull;
+
 public class IdRequest {
 
+    @NotNull
     private Long id;
 
     public Long getId() {

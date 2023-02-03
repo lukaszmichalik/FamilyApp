@@ -1,0 +1,262 @@
+{
+	"info": {
+		"_postman_id": "c99117e2-2561-4a85-8496-427fedaf6d21",
+		"name": "family_app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25473092"
+	},
+	"item": [
+		{
+			"name": "create-family NOWAK",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \"familyName\":\"Nowak\",\r\n    \"nrOfInfants\":0,\r\n    \"nrOfChildren\":1,\r\n    \"nrOfAdults\":2,\r\n    \"familyMembers\":[{\r\n        \"givenName\":\"Jan\",\r\n        \"familyName\":\"Nowak\",\r\n        \"age\":55},\r\n        {\r\n        \"givenName\":\"Maria\",\r\n        \"familyName\":\"Nowak\",\r\n        \"age\":55},\r\n        {\r\n        \"givenName\":\"Maciej\",\r\n        \"familyName\":\"Nowak\",\r\n        \"age\":13}]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/create-family",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"create-family"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-family KOWAL",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n    \"familyName\":\"Kowal\",\r\n    \"nrOfInfants\":0,\r\n    \"nrOfChildren\":0,\r\n    \"nrOfAdults\":3,\r\n    \"familyMembers\":[{\r\n        \"givenName\":\"Piotr\",\r\n        \"familyName\":\"Kowal\",\r\n        \"age\":55},\r\n        {\r\n        \"givenName\":\"Ela\",\r\n        \"familyName\":\"Kowal\",\r\n        \"age\":55},\r\n        {\r\n        \"givenName\":\"Robert\",\r\n        \"familyName\":\"Kowal\",\r\n        \"age\":22}]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/create-family",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"create-family"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-family unmatching nrOfInfants",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \"familyName\":\"Nowakowski\",\r\n    \"nrOfInfants\":3,\r\n    \"nrOfChildren\":0,\r\n    \"nrOfAdults\":2,\r\n    \"familyMembers\":[{\r\n        \"givenName\":\"Jan\",\r\n        \"familyName\":\"Nowakowski\",\r\n        \"age\":55},\r\n        {\r\n        \"givenName\":\"Maria\",\r\n        \"familyName\":\"Nowakowski\",\r\n        \"age\":55},\r\n        {\r\n        \"givenName\":\"Maciej\",\r\n        \"familyName\":\"Nowakowski\",\r\n        \"age\":13}]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/create-family",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"create-family"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-family null request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \"familyName\":\"Nowakowski\",\r\n    \"nrOfInfants\":3,\r\n    \"nrOfAdults\":2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/create-family",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"create-family"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-family",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/get-family",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"get-family"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-family null request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/get-family",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"get-family"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-family id not found",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":50\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/get-family",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"get-family"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-family-member",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"givenName\":\"Marcin\",\r\n    \"familyName\":\"Nowak\",\r\n    \"age\":22,\r\n    \"familyId\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/create-family-member",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"create-family-member"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search-family-member",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/search-family-member",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"search-family-member"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

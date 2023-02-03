@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class FamilyMemberServiceImpl implements  FamilyMemberService{
     @Autowired
-    FamilyMemberRepository familyMemberRepository;
+    private FamilyMemberRepository familyMemberRepository;
 
     @Override
     public void createFamilyMember(FamilyMemberRequest familyMemberRequest) {

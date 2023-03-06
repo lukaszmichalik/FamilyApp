@@ -13,7 +13,7 @@ $ mvn install
 ```bash
 $ docker compose up
 ```
-Note: `maven`, `docker` and `docker compose` must be installed and the `docker deamon` must be running.
+Note: `maven`, `docker` and `docker compose` must be installed and the `docker daemon` must be running.
 
 ## Testing API
 

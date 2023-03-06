@@ -7,10 +7,13 @@ public class FamilyResponse {
     private Integer nrOfAdults;
     private FamilyMemberResponse[] familyMembers;
 
-    public FamilyResponse(String familyName, Integer nrOfInfants, Integer nrOfChildren, Integer nrOfAdults
-            , FamilyMemberResponse[] familyMembers
-            )
-    {
+    public FamilyResponse(
+            String familyName,
+            Integer nrOfInfants,
+            Integer nrOfChildren,
+            Integer nrOfAdults,
+            FamilyMemberResponse[] familyMembers) {
+
         this.familyName = familyName;
         this.nrOfInfants = nrOfInfants;
         this.nrOfChildren = nrOfChildren;

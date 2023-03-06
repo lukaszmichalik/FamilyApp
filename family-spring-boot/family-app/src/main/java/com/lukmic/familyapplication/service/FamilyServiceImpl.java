@@ -25,7 +25,7 @@ public class FamilyServiceImpl implements FamilyService {
     private RestTemplate restTemplate;
 
     @Override
-    public ResponseEntity<?> retrieveFamily(IdRequest idRequest){
+    public ResponseEntity<?> retrieveFamily(IdRequest idRequest) {
 
         Optional<Family> family = familyRepository.findById(idRequest.getId());
         FamilyMemberResponse[] familyMembers = callSearchFamilyMember(idRequest);
@@ -46,7 +46,7 @@ public class FamilyServiceImpl implements FamilyService {
     }
 
     @Override
-    public ResponseEntity<?> createNewFamily(FamilyRequest familyRequest){
+    public ResponseEntity<?> createNewFamily(FamilyRequest familyRequest) {
 
         if(!validateFamilyData(familyRequest))
             return ResponseEntity
@@ -72,7 +72,7 @@ public class FamilyServiceImpl implements FamilyService {
         return ResponseEntity.ok(new IdResponse(family.getId()));
     }
 
-    private Boolean validateFamilyData(FamilyRequest familyRequest){
+    private Boolean validateFamilyData(FamilyRequest familyRequest) {
 
         if (familyRequest.getNrOfInfants() != familyRequest.getFamilyMembers().stream()
                 .filter(familyMember ->

@@ -17,13 +17,13 @@ public class FamilyController {
     private FamilyService familyService;
 
     @PostMapping("/create-family")
-    public ResponseEntity<?> createFamily(@Valid @RequestBody FamilyRequest familyRequest){
+    public ResponseEntity<?> createFamily(@Valid @RequestBody FamilyRequest familyRequest) {
 
         return familyService.createNewFamily(familyRequest);
     }
 
     @PostMapping("/get-family")
-    public ResponseEntity<?> getFamily(@Valid @RequestBody IdRequest idRequest){
+    public ResponseEntity<?> getFamily(@Valid @RequestBody IdRequest idRequest) {
 
         return familyService.retrieveFamily(idRequest);
     }

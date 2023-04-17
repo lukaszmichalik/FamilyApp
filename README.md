@@ -1,3 +1,7 @@
+# FamilyApp
+
+Spring Boot backend app with microservices architecture providing REST API to manage family data.
+
 ## Running the Application
 
 - In the root folder of the application -> `/family-spring-boot`
@@ -21,7 +25,7 @@ Note: `maven`, `docker` and `docker compose` must be installed and the `docker d
 
 ## Accessing PostgreSQL database
 
-Accesing database allows to check the contents of database after api testing.
+Accessing database allows to check the contents of database after api testing.
 
 - In new command prompt run:
 
